@@ -9,6 +9,7 @@ import Consulation from './components/Consulation.vue';
 Vue.use(Router);
 
 export default new Router({
+  mode: 'history',
   routes: [
     {
       path: '/',
@@ -28,6 +29,13 @@ export default new Router({
       path: '/consulation',
       components: {
         default: Consulation,
+        header: SampleAppHeader
+      }
+    },
+    {
+      path: '*',
+      components: {
+        default: Birthday,
         header: SampleAppHeader
       }
     }
