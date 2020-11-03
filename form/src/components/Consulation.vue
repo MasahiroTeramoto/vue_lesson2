@@ -21,9 +21,9 @@
             </div>
             <div class="buttons is-centered">
                 <router-link to="/insurance">
-                    <button class="button is-medium is-primary">前へ戻る</button>
+                    <button class="button is-medium is-primary">前へ戻る ></button>
                 </router-link>
-                <button class="button is-medium is-primary">次へ進む</button>
+                <button class="button is-medium is-primary">次へ進む ></button>
             </div>
         </div>
     </div>

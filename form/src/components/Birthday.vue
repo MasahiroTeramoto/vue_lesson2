@@ -22,8 +22,8 @@
                         <label class="has-text-primary">-生年月日-</label><br />
                         <form name="birthday">
                             <select name="year" v-on:change="changeBirthday">
-                                <option v-for="year in years" :key="year" :value="year">
-                                    {{ year }}
+                                <option v-for="year in years" :key="year" :value="year.year">
+                                    {{ year.year }}({{ year.japanese }})
                                 </option>
                             </select>
                             年
