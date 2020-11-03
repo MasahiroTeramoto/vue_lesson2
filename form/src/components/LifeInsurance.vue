@@ -12,21 +12,21 @@
                 </div>
                 <div class="box">
                     <div>
-                        <label class="has-text-primary">現在、生命保険に加入されていますか？</label><br />
+                        <label class="has-text-primary">-現在、生命保険に加入されていますか？-</label><br />
                         <form name="join">
                             <input type="radio" name="join" value="はい" v-on:change="changeJoinStatus" />はい
                             <input type="radio" name="join" value="いいえ" v-on:change="changeJoinStatus" />いいえ
                         </form>
                     </div>
                     <div v-if="isJoinFlag">
-                        <label class="has-text-primary">現在入院中ですか。または、最近3ヶ月以内に医師の診察・検査の結果、入院・手術をすすめられたことはありますか？</label><br />
+                        <label class="has-text-primary">-現在入院中ですか。または、最近3ヶ月以内に医師の診察・検査の結果、入院・手術をすすめられたことはありますか？-</label><br />
                         <form name="warn">
                             <input type="radio" name="warn" value="はい" v-on:change="changeWarnStatus" />はい
                             <input type="radio" name="warn" value="いいえ" v-on:change="changeWarnStatus" />いいえ
                         </form>
                     </div>
                     <div v-if="isWarnedFlag">
-                        <label class="has-text-primary">過去3年以内に、病気や怪我で、手術を受けたことまたは継続して7日以上の入院をしたことがありますか？</label><br />
+                        <label class="has-text-primary">-過去3年以内に、病気や怪我で、手術を受けたことまたは継続して7日以上の入院をしたことがありますか？-</label><br />
                         <form name="past">
                             <input type="radio" name="past" value="はい" v-on:change="changePastStatus" />はい
                             <input type="radio" name="past" value="いいえ" v-on:change="changePastStatus" />いいえ
@@ -36,10 +36,10 @@
             </div>
             <div class="buttons is-centered">
                 <router-link to="/">
-                    <button class="button is-medium is-primary">前へ戻る</button>
+                    <button class="button is-medium is-primary">前へ戻る ></button>
                 </router-link>
                 <router-link to="/consulation">
-                    <button class="button is-medium is-primary">次へ進む</button>
+                    <button class="button is-medium is-primary">次へ進む ></button>
                 </router-link>
             </div>
         </div>
