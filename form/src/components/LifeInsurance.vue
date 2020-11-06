@@ -14,22 +14,22 @@
                     <div>
                         <label class="has-text-primary">-現在、生命保険に加入されていますか？-</label><br />
                         <form name="join">
-                            <input type="radio" name="join" value="はい" v-on:change="changeJoinStatus" />はい
-                            <input type="radio" name="join" value="いいえ" v-on:change="changeJoinStatus" />いいえ
+                            <input type="radio" name="join" value="はい" v-model="myJoinStatus" />はい
+                            <input type="radio" name="join" value="いいえ" v-model="myJoinStatus" />いいえ
                         </form>
                     </div>
                     <div v-if="isJoinFlag">
                         <label class="has-text-primary">-現在入院中ですか。または、最近3ヶ月以内に医師の診察・検査の結果、入院・手術をすすめられたことはありますか？-</label><br />
                         <form name="warn">
-                            <input type="radio" name="warn" value="はい" v-on:change="changeWarnStatus" />はい
-                            <input type="radio" name="warn" value="いいえ" v-on:change="changeWarnStatus" />いいえ
+                            <input type="radio" name="warn" value="はい" v-model="myWarnStatus" />はい
+                            <input type="radio" name="warn" value="いいえ" v-model="myWarnStatus" />いいえ
                         </form>
                     </div>
                     <div v-if="isWarnedFlag">
                         <label class="has-text-primary">-過去3年以内に、病気や怪我で、手術を受けたことまたは継続して7日以上の入院をしたことがありますか？-</label><br />
                         <form name="past">
-                            <input type="radio" name="past" value="はい" v-on:change="changePastStatus" />はい
-                            <input type="radio" name="past" value="いいえ" v-on:change="changePastStatus" />いいえ
+                            <input type="radio" name="past" value="はい" v-model="myPastStatus" />はい
+                            <input type="radio" name="past" value="いいえ" v-model="myPastStatus" />いいえ
                         </form>
                     </div>
                 </div>
@@ -50,40 +50,42 @@
 <script>
 export default {
     data() {
+        let isJoinFlag = false,
+            isWarnedFlag = false;
+        if (this.$store.state.myJoinStatus) isJoinFlag = true;
+        if (this.$store.state.myWarnStatus) isWarnedFlag = true;
+
         return {
-            isJoinFlag: false,
-            isWarnedFlag: false
+            isJoinFlag,
+            isWarnedFlag
         };
     },
-    methods: {
-        changeJoinStatus() {
-            if (!this.isJoinFlag) this.isJoinFlag = !this.isJoinFlag;
-
-            const joinStatus = document.join.join;
-            joinStatus.forEach(d => {
-                if (d.checked === true) {
-                    console.log(d.value);
-                    this.$store.dispatch('changeMyJoinStatus', d.value);
-                }
-            });
+    computed: {
+        myJoinStatus: {
+            get() {
+                return this.$store.state.myJoinStatus;
+            },
+            set(value) {
+                if (!this.isJoinFlag) this.isJoinFlag = !this.isJoinFlag;
+                this.$store.commit('changeMyJoinStatus', value);
+            }
         },
-        changeWarnStatus() {
-            if (!this.isWarnedFlag) this.isWarnedFlag = !this.isWarnedFlag;
-
-            const warnStatus = document.warn.warn;
-            warnStatus.forEach(d => {
-                if (d.checked === true) {
-                    this.$store.dispatch('changeMyWarnStatus', d.value);
-                }
-            });
+        myWarnStatus: {
+            get() {
+                return this.$store.state.myWarnStatus;
+            },
+            set(value) {
+                if (!this.isWarnedFlag) this.isWarnedFlag = !this.isWarnedFlag;
+                this.$store.commit('changeMyWarnStatus', value);
+            }
         },
-        changePastStatus() {
-            const PastStatus = document.past.past;
-            PastStatus.forEach(d => {
-                if (d.checked === true) {
-                    this.$store.dispatch('changeMyPastStatus', d.value);
-                }
-            });
+        myPastStatus: {
+            get() {
+                return this.$store.state.myPastStatus;
+            },
+            set(value) {
+                this.$store.commit('changeMyPastStatus', value);
+            }
         }
     }
 };

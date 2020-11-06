@@ -14,7 +14,7 @@
                     <div>
                         <label class="has-text-primary">-ご相談内容-</label><br />
                         <form name="consulation">
-                            <textarea class="textarea has-fixed-size" name="consulation" rows="20" cols="85" @change="helloWorld"></textarea>
+                            <textarea class="textarea has-fixed-size" name="consulation" rows="20" cols="85" v-model="myConsultationContent"></textarea>
                         </form>
                     </div>
                 </div>
@@ -33,17 +33,15 @@
 </template>
 
 <script>
-import {
-    mapState
-} from 'vuex';
 export default {
     computed: {
-        ...mapState(['years', 'months', 'days'])
-    },
-    methods: {
-        helloWorld() {
-            const content = document.consulation.consulation.value;
-            this.$store.dispatch('changeMyConsultationContent', content);
+        myConsultationContent: {
+            get() {
+                return this.$store.state.myConsultationContent;
+            },
+            set(value) {
+                this.$store.commit('changeMyConsultationContent', value);
+            }
         }
     }
 };

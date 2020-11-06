@@ -14,27 +14,27 @@
                     <div>
                         <label class="has-text-primary">-性別-</label><br />
                         <form name="gender">
-                            <input type="radio" name="gender" value="男性" v-on:change="changeMyGender('男性')" />男性
-                            <input type="radio" name="gender" value="女性" v-on:change="changeMyGender('女性')" />女性
+                            <input type="radio" name="gender" value="男性" v-model="myGender" />男性
+                            <input type="radio" name="gender" value="女性" v-model="myGender" />女性
                         </form>
                     </div>
                     <div>
                         <label class="has-text-primary">-生年月日-</label><br />
                         <form name="birthday">
-                            <select name="year" v-on:change="changeBirthday">
-                                <option v-for="year in years" :key="year" :value="year.year">
+                            <select name="year" v-model="myYear">
+                                <option v-for="year in years" :value="year.year" :key="year.year">
                                     {{ year.year }}({{ year.japanese }})
                                 </option>
                             </select>
                             年
-                            <select name="month" v-on:change="changeBirthday">
-                                <option v-for="month in months" :key="month">
+                            <select name="month" v-model="myMonth">
+                                <option v-for="month in months" :value="month" :key="month">
                                     {{ month }}
                                 </option>
                             </select>
                             月
-                            <select name="day" v-on:change="changeBirthday">
-                                <option v-for="day in days" :key="day">
+                            <select name="day" v-model="myDay">
+                                <option v-for="day in days" :value="day" :key="day">
                                     {{ day }}
                                 </option>
                             </select>
@@ -55,27 +55,43 @@
 
 <script>
 import {
-    mapGetters,
-    mapActions
+    mapGetters
 } from 'vuex';
 
 export default {
     computed: {
-        ...mapGetters('birthday', ['years', 'months', 'days'])
-    },
-    methods: {
-        ...mapActions(['changeMyGender']),
-        changeBirthday() {
-            const year = document.birthday.year;
-            const month = document.birthday.month;
-            const day = document.birthday.day;
-            const birthYear = year.options[year.selectedIndex].value;
-            const birthMonth = month.options[month.selectedIndex].value;
-            const birthDay = day.options[day.selectedIndex].value;
-
-            this.$store.dispatch('changeMyYear', birthYear);
-            this.$store.dispatch('changeMyMonth', birthMonth);
-            this.$store.dispatch('changeMyDay', birthDay);
+        ...mapGetters('birthday', ['years', 'months', 'days']),
+        myGender: {
+            get() {
+                return this.$store.state.myGender;
+            },
+            set(value) {
+                this.$store.commit('changeMyGender', value);
+            }
+        },
+        myYear: {
+            get() {
+                return this.$store.state.myYear;
+            },
+            set(value) {
+                this.$store.commit('changeMyYear', value);
+            }
+        },
+        myMonth: {
+            get() {
+                return this.$store.state.myMonth;
+            },
+            set(value) {
+                this.$store.commit('changeMyMonth', value);
+            }
+        },
+        myDay: {
+            get() {
+                return this.$store.state.myDay;
+            },
+            set(value) {
+                this.$store.commit('changeMyDay', value);
+            }
         }
     }
 };
