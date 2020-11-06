@@ -6,13 +6,13 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    myGender: String,
-    myYear: String,
-    myMonth: String,
-    myDay: String,
-    myJoinStatus: String,
-    myWarnStatus: String,
-    myPastStatus: String,
+    myGender: '',
+    myYear: '1993',
+    myMonth: '1',
+    myDay: '1',
+    myJoinStatus: '',
+    myWarnStatus: '',
+    myPastStatus: '',
     myConsultationContent: ''
   },
   getters: {
@@ -49,32 +49,6 @@ export default new Vuex.Store({
     },
     changeMyConsultationContent(state, content) {
       state.myConsultationContent = content;
-    }
-  },
-  actions: {
-    changeMyGender({ commit }, gender) {
-      commit('changeMyGender', gender);
-    },
-    changeMyYear({ commit }, year) {
-      commit('changeMyYear', year);
-    },
-    changeMyMonth({ commit }, month) {
-      commit('changeMyMonth', month);
-    },
-    changeMyDay({ commit }, day) {
-      commit('changeMyDay', day);
-    },
-    changeMyJoinStatus({ commit }, joinStatus) {
-      commit('changeMyJoinStatus', joinStatus);
-    },
-    changeMyWarnStatus({ commit }, warnStatus) {
-      commit('changeMyWarnStatus', warnStatus);
-    },
-    changeMyPastStatus({ commit }, pastStatus) {
-      commit('changeMyPastStatus', pastStatus);
-    },
-    changeMyConsultationContent({ commit }, content) {
-      commit('changeMyConsultationContent', content);
     }
   },
   modules: {
