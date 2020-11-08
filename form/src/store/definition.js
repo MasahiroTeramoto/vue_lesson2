@@ -17,16 +17,4 @@ for (let i = 0; i < 31; i++) {
   days.push(i + 1);
 }
 
-const state = {
-  years,
-  months,
-  days
-};
-
-const getters = {
-  years: state => state.years,
-  months: state => state.months,
-  days: state => state.days
-};
-
-export { state, getters };
+export { years, months, days };
