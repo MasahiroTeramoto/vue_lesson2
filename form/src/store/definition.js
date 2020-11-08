@@ -29,8 +29,4 @@ const getters = {
   days: state => state.days
 };
 
-export default {
-  namespaced: true,
-  state,
-  getters
-};
+export { state, getters };
