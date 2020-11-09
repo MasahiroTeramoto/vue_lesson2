@@ -23,7 +23,9 @@
                 <router-link to="/insurance">
                     <button class="button is-medium is-primary">前へ戻る ></button>
                 </router-link>
-                <button class="button is-medium is-primary">次へ進む ></button>
+                <router-link to="/result">
+                    <button class="button is-medium is-primary">次へ進む ></button>
+                </router-link>
             </div>
         </div>
     </div>
