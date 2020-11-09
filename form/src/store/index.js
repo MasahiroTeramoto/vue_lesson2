@@ -1,11 +1,14 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-import birthday from './modules/birthday';
+import { years, months, days } from './definition';
 
 Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
+    years,
+    months,
+    days,
     myGender: '',
     myYear: '1993',
     myMonth: '1',
@@ -16,6 +19,9 @@ export default new Vuex.Store({
     myConsultationContent: ''
   },
   getters: {
+    years: state => state.years,
+    months: state => state.months,
+    days: state => state.days,
     myGender: state => state.myGender,
     myYear: state => state.myYear,
     myMonth: state => state.myMonth,
@@ -50,8 +56,5 @@ export default new Vuex.Store({
     changeMyConsultationContent(state, content) {
       state.myConsultationContent = content;
     }
-  },
-  modules: {
-    birthday
   }
 });

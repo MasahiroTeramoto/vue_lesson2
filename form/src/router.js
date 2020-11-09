@@ -5,7 +5,6 @@ import SampleAppHeader from './components/SampleAppHeader.vue';
 import Birthday from './components/Birthday.vue';
 import LifeInsurance from './components/LifeInsurance.vue';
 import Consulation from './components/Consulation.vue';
-import Result from './components/Result.vue';
 
 Vue.use(Router);
 
@@ -30,13 +29,6 @@ export default new Router({
       path: '/consulation',
       components: {
         default: Consulation,
-        header: SampleAppHeader
-      }
-    },
-    {
-      path: '/result',
-      components: {
-        default: Result,
         header: SampleAppHeader
       }
     },

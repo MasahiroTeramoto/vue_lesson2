@@ -60,7 +60,7 @@ import {
 
 export default {
     computed: {
-        ...mapGetters('birthday', ['years', 'months', 'days']),
+        ...mapGetters(['years', 'months', 'days']),
         myGender: {
             get() {
                 return this.$store.state.myGender;
