@@ -1,6 +1,6 @@
-const years = [],
-  months = [],
-  days = [];
+const years = [];
+const months = [];
+const days = [];
 
 for (let i = 0; i < 31; i++) {
   years.push({
