@@ -24,7 +24,7 @@
                         </p>
                     </div>
                     <div>
-                        <label class="has-text-primary">現在、生命保険に加入されていますか？</label><br />
+                        <label class="has-text-primary">-現在、生命保険に加入されていますか？-</label><br />
                         <p>{{ myJoinStatus }}</p>
                     </div>
                     <div>
